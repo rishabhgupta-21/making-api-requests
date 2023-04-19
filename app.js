@@ -12,6 +12,15 @@ const config = {
     }
 }
 
+function addErrorFact(err) {
+    console.error(err)
+
+    const p = document.createElement('p')
+    p.innerText = 'Sorry, no new facts are available right now :('
+    p.classList.add('error')
+    factsList.append(p)
+}
+
 fetchCallbackButton.addEventListener('click', () => {
     fetch('https://uselessfacts.jsph.pl/api/v2/facts/random', config)
         .then(response => {
@@ -24,12 +33,7 @@ fetchCallbackButton.addEventListener('click', () => {
             factsList.append(newFact)
         })
         .catch(err => {
-            console.error(err)
-
-            const p = document.createElement('p')
-            p.innerText = 'Sorry, no new facts are available right now :('
-            p.classList.add('error')
-            factsList.append(p)
+            addErrorfact(err)
         })
 })
 
@@ -44,11 +48,6 @@ fetchAsyncButton.addEventListener('click', async () => {
         factsList.append(newFact)
     }
     catch (err) {
-        console.error(err)
-
-        const p = document.createElement('p')
-        p.innerText = 'Sorry, no new facts are available right now :('
-        p.classList.add('error')
-        factsList.append(p)
+        addErrorFact(err)
     }
 })
