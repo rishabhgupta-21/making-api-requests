@@ -6,12 +6,14 @@ const fetchAsyncButton = document.querySelector('#fetchAsync')
 const axiosCallbackButton = document.querySelector('#axiosCallback')
 const axiosAsyncButton = document.querySelector('#axiosAsync')
 
+// Configuration Information
 const config = {
     headers: {
         Accept: 'application/json'
     }
 }
 
+// Function for Dealing with Errors
 function addErrorFact(err) {
     console.error(err);
 
@@ -21,6 +23,7 @@ function addErrorFact(err) {
     factsList.append(p)
 }
 
+// Event Listeners for all 4 buttons
 fetchCallbackButton.addEventListener('click', () => {
     fetch('https://uselessfacts.jsph.pl/api/v2/facts/random', config)
         .then(response => {
