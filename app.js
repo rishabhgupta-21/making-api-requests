@@ -66,13 +66,10 @@ axiosCallbackButton.addEventListener('click', () => {
         }
     }
 
-    fetch('https://uselessfacts.jsph.pl/api/v2/facts/random', config)
+    axios.get('https://uselessfacts.jsph.pl/api/v2/facts/random', config)
         .then(response => {
-            return response.json()
-        })
-        .then(data => {
             const newFact = document.createElement('li')
-            newFact.append(data.text)
+            newFact.append(response.data.text)
             newFact.classList.add('fact')
             factsList.append(newFact)
         })
