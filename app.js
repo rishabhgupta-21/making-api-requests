@@ -36,7 +36,7 @@ fetchCallbackButton.addEventListener('click', () => {
             factsList.append(newFact)
         })
         .catch(err => {
-            addErrorfact(err)
+            addErrorFact(err)
         })
 })
 
